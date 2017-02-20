@@ -1,5 +1,7 @@
 package org.openntf.wherespace.api;
 import java.math.BigDecimal;
+
+import org.joda.time.LocalDate;
 import org.openntf.wherespace.model.Event;
 import org.openntf.wherespace.model.Success;
 
@@ -73,7 +75,7 @@ public interface EventsApi {
         produces = { "application/json" },
         method = RequestMethod.GET)
     ResponseEntity<List<Event>> eventsPersonEventdateGet(@ApiParam(value = "Fetched all the events by person email", required = true) @RequestParam(value = "email", required = true) String email,
-        @ApiParam(value = "Fetched all the events by certain date", required = true) @RequestParam(value = "date", required = true) BigDecimal date);
+        @ApiParam(value = "Fetched all the events by certain date", required = true) @RequestParam(value = "date", required = true) LocalDate date);
 
 
     @ApiOperation(value = "Get events by person", notes = "Get the event by personId", response = Event.class, responseContainer = "List", tags={ "Event", })

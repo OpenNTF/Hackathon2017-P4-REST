@@ -260,7 +260,10 @@
                         "name": "date",
                         "description": "Fetched all the events by certain date",
                         "required": true,
-                        "type": "number"
+                        "schema": {
+                          "type": "string",
+                          "format": "date"
+                        }
                     }
                 ],
                 "tags": [
