@@ -1,0 +1,846 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Watson wherespace",
+        "description": "",
+        "version": "1.0.0",
+        "contact":{
+        "name": "OpenNTF",
+        "url": "http://www.openntf.org",
+        "email": "info@openntf.org"
+        }
+    },
+    "host": "api.rabobank.n",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/v2",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/events/{eventId}": {
+            "get": {
+                "summary": "Get the event by his id",
+                "description": "Return the Event by his ID",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "eventId",
+                        "in": "path",
+                        "description": "The ID of the event.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Event"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Event"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid event ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Event not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create the event by his id",
+                "description": "Create the Event by his ID",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "eventId",
+                        "in": "path",
+                        "description": "The ID of the event.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Event"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Event"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid event ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Event not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update the event by his id",
+                "description": "Update the Event by his ID",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "eventId",
+                        "in": "path",
+                        "description": "The ID of the event.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Event"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Event"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid event ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Event not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete the event by his id",
+                "description": "Delete the Event by his ID",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "eventId",
+                        "in": "path",
+                        "description": "The ID of the event.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Event"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid event ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Event not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/events/person":{
+            "get":{
+                "summary": "Get events by person",
+                "description": "Get the event by personId",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "email",
+                        "description": "Fetched all the events by person email",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Event"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Event"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid email supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Event not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/events/person/eventdate":{
+            "get":{
+                "summary": "Get events by person",
+                "description": "Get the events by email and date",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "email",
+                        "description": "Fetched all the events by person email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "date",
+                        "description": "Fetched all the events by certain date",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "tags": [
+                    "Event"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Event"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid email and date supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Event not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/person/{personId}": {
+            "get": {
+                "summary": "Get the person by his id",
+                "description": "Return the Event by his ID",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "personId",
+                        "in": "path",
+                        "description": "The ID of the person.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Person"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Person"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid person ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Person not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create the person by his id",
+                "description": "Create the Person by his ID",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "personId",
+                        "in": "path",
+                        "description": "The ID of the person.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Person"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Person"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid person ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Person not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update the person by his id",
+                "description": "Update the Person by his ID",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "personId",
+                        "in": "path",
+                        "description": "The ID of the person.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Person"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Person"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid person ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Person not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete the person by his id",
+                "description": "Delete the Person by his ID",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "personId",
+                        "in": "path",
+                        "description": "The ID of the person.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Person"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid person ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Person not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/person/email":{
+            "get":{
+                "summary": "Get events by person",
+                "description": "Get the person by email",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "email",
+                        "description": "Fetched all the person by email",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Person"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Person"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid email supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Person not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/location/{locationId}": {
+            "get": {
+                "summary": "Get the location by his id",
+                "description": "Return the Location by his ID",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "path",
+                        "description": "The ID of the location.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Location"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Location"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid location ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Location not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create the location by his id",
+                "description": "Create the Location by his ID",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "path",
+                        "description": "The ID of the location.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Location"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Location"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid location ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Location not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update the location by his id",
+                "description": "Update the Location by his ID",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "path",
+                        "description": "The ID of the location.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Location"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Location"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid location ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Location not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete the location by his id",
+                "description": "Delete the Location by his ID",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "path",
+                        "description": "The ID of the location.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Location"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/Success"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid location ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Location not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/location/all":{
+            "get":{
+                "summary": "Get all locations by person",
+                "description": "Get the Locations",
+                "produces": [
+                    "application/json"
+                ],
+
+                "tags": [
+                    "Location"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Location"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Location not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/people/event/{eventId}":{
+            "get":{
+                "summary": "Get all people by event",
+                "description": "Get all people by Event",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "eventId",
+                        "in": "path",
+                        "description": "The ID of the event.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "People"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Person"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid event ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "People not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/people/location/{locationId}":{
+            "get":{
+                "summary": "Get all people by location",
+                "description": "Get all people by Location",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "locationId",
+                        "in": "path",
+                        "description": "The ID of the location.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "People"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Person"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid Location ID supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "People not found",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Event": {
+            "type": "object",
+            "properties": {
+                "eventId": {
+                    "type": "string"
+                },
+                "personId": {
+                    "type": "string"
+                },
+                "locationId": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "latitude":{
+                    "type": "number",
+                    "format": "float"
+                },
+                "longitude":{
+                    "type": "number",
+                    "format": "float"
+                }
+            }
+        },
+        "Person": {
+            "type": "object",
+            "properties": {
+                "personId": {
+                    "type": "string"
+                },
+                "emailaddress": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "department": {
+                    "type": "string"
+                },
+                "office": {
+                    "type": "string"
+                }
+            }
+        },
+        "Location": {
+            "type": "object",
+            "properties": {
+                "locationId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "string"
+                }
+            }
+        },
+        "Success": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
