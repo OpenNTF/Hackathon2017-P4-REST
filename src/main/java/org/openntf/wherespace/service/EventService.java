@@ -1,6 +1,7 @@
 package org.openntf.wherespace.service;
 
 import org.joda.time.LocalDate;
+import org.openntf.wherespace.mock.MockDataGenerator;
 import org.openntf.wherespace.model.Event;
 import org.openntf.wherespace.model.Person;
 import org.openntf.wherespace.model.Success;
@@ -17,17 +18,17 @@ import java.util.List;
 public class EventService extends BaseService {
 
     public Event post(Event event){
-        getGenerator().getEvents().add(event);
+        MockDataGenerator.getEvents().add(event);
         return event;
     }
 
     public Event put(Event event){
-        getGenerator().getEvents().add(event);
+        MockDataGenerator.getEvents().add(event);
         return event;
     }
 
     public Event get(String eventId){
-        List<Event> events = getGenerator().getEvents();
+        List<Event> events = MockDataGenerator.getEvents();
         for(Event event : events){
             if (eventId.equals(event.getEventId())){
                 return event;
@@ -37,7 +38,7 @@ public class EventService extends BaseService {
     }
 
     public Success delete(String eventId){
-        List<Event> events = getGenerator().getEvents();
+        List<Event> events = MockDataGenerator.getEvents();
         for(Event event : events){
             if (eventId.equals(event.getEventId())){
                 events.remove(event);
@@ -52,7 +53,7 @@ public class EventService extends BaseService {
     public List<Event> getEventsByPersonEmail(String email){
         List<Event> events = new ArrayList<Event>();
 
-        for(Event event : getGenerator().getEvents()){
+        for(Event event : MockDataGenerator.getEvents()){
             Person person = getPersonByPersonId(event.getPersonId());
             if(person != null) {
                 if (email.equals(person.getEmailaddress())) {
@@ -67,7 +68,7 @@ public class EventService extends BaseService {
     public List<Event> getEventsByPersonEmailAndDate(String email, LocalDate date){
         List<Event> events = new ArrayList<Event>();
 
-        for(Event event : getGenerator().getEvents()){
+        for(Event event : MockDataGenerator.getEvents()){
             Person person = getPersonByPersonId(event.getPersonId());
             if(person != null) {
                 if (email.equals(person.getEmailaddress()) && date.equals(event.getDate())) {
@@ -80,7 +81,7 @@ public class EventService extends BaseService {
     }
 
     private Person getPersonByPersonId(String personId){
-        List<Person> persons = getGenerator().getPeople();
+        List<Person> persons = MockDataGenerator.getPeople();
         for(Person person : persons){
             if(personId.equals(person.getPersonId())){
                 return person;

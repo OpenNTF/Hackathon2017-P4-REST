@@ -19,7 +19,7 @@ public class BaseService {
 
     @PostConstruct
     public void init(){
-        generator.run();
+        //generator.run();
     }
 
     public MockDataGenerator getGenerator() {

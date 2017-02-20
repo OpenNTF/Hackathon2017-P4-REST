@@ -1,5 +1,6 @@
 package org.openntf.wherespace.service;
 
+import org.openntf.wherespace.mock.MockDataGenerator;
 import org.openntf.wherespace.model.Location;
 import org.openntf.wherespace.model.Success;
 import org.springframework.stereotype.Service;
@@ -13,17 +14,17 @@ import java.util.List;
 public class LocationService extends BaseService {
 
     public Location post(Location location){
-        getGenerator().getLocations().add(location);
+        MockDataGenerator.getLocations().add(location);
         return location;
     }
 
     public Location put(Location location){
-        getGenerator().getLocations().add(location);
+        MockDataGenerator.getLocations().add(location);
         return location;
     }
 
     public Location get(String locationId){
-        List<Location> locations = getGenerator().getLocations();
+        List<Location> locations = MockDataGenerator.getLocations();
         for(Location location : locations){
             if (locationId.equals(location.getLocationId())){
                 return location;
@@ -33,11 +34,11 @@ public class LocationService extends BaseService {
     }
 
     public List<Location> getAllLocations(){
-        return getGenerator().getLocations();
+        return MockDataGenerator.getLocations();
     }
 
     public Success delete(String locationId){
-        List<Location> locations = getGenerator().getLocations();
+        List<Location> locations = MockDataGenerator.getLocations();
         for(Location location : locations){
             if (locationId.equals(location.getLocationId())){
                 locations.remove(location);

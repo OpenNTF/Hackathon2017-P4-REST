@@ -20,8 +20,7 @@ import java.util.List;
 @Controller
 public class LocationApiController implements LocationApi {
 
-    @Autowired
-    private LocationService locationService;
+    private LocationService locationService = new LocationService();
 
     public ResponseEntity<List<Location>> locationAllGet() {
         // do some magic!

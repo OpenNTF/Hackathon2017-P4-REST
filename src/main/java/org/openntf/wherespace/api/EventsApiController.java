@@ -25,8 +25,7 @@ import java.util.List;
 @Controller
 public class EventsApiController implements EventsApi {
 
-    @Autowired
-    private EventService eventService;
+    private EventService eventService = new EventService();
 
     public ResponseEntity<Success> eventsEventIdDelete(@ApiParam(value = "The ID of the event.",required=true ) @PathVariable("eventId") String eventId) {
         // do some magic!

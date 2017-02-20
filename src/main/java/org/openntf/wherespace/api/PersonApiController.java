@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class PersonApiController implements PersonApi {
 
-    @Autowired
-    private PersonService personService;
+    private PersonService personService = new PersonService();
     public ResponseEntity<Person> personEmailGet(@ApiParam(value = "Fetched all the person by email", required = true) @RequestParam(value = "email", required = true) String email) {
         // do some magic!
         Person person = personService.getByEmail(email);

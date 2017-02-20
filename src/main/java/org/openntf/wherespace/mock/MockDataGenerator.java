@@ -17,21 +17,23 @@ public class MockDataGenerator {
 
     private static final Random random = new Random(1);
 
-    private List<Person> people = null;
-    private List<Location> locations = null;
-    private List<Event> events = null;
+    private static List<Person> people1 = new ArrayList<Person>();
+    private static List<Location> locations1 = new ArrayList<Location>();
+    private static List<Event> events1 = new ArrayList<Event>();
 
     public MockDataGenerator(){
 
     }
 
     public void run(){
-    	createLocations();
-    	createPeople();
-    	createEvents();
+    	//createLocations();
+    	//createPeople();
+    	//createEvents();
     }
 
-    private void createPeople() {
+    public static List<Person> getPeople() {
+        List<Person> people = new ArrayList<Person>();
+
         Person person = new Person();
         person.setDepartment("Development");
         person.setEmailaddress("graham.acres@brytek.ca");
@@ -40,7 +42,7 @@ public class MockDataGenerator {
         person.setPersonId("1");
         person.setPhoneNumber("(604) 916-7526");
 
-        this.getPeople().add(person);
+        people.add(person);
 
         person = new Person();
         person.setDepartment("Development");
@@ -50,7 +52,7 @@ public class MockDataGenerator {
         person.setPersonId("20");
         person.setPhoneNumber("(604) 916-7526");
 
-        this.getPeople().add(person);
+        people.add(person);
 
         person = new Person();
         person.setDepartment("Development");
@@ -60,7 +62,7 @@ public class MockDataGenerator {
         person.setPersonId("2");
         person.setPhoneNumber("(504) 669 4391");
 
-        this.getPeople().add(person);
+        people.add(person);
 
         person = new Person();
         person.setDepartment("Development");
@@ -70,7 +72,7 @@ public class MockDataGenerator {
         person.setPersonId("3");
         person.setPhoneNumber("(773) 297 8756");
 
-        this.getPeople().add(person);
+        people.add(person);
 
         person = new Person();
         person.setDepartment("Development");
@@ -80,7 +82,7 @@ public class MockDataGenerator {
         person.setPersonId("4");
         person.setPhoneNumber("+44 774 904 6270");
 
-        getPeople().add(person);
+        people.add(person);
 
         person = new Person();
         person.setDepartment("Development");
@@ -89,45 +91,56 @@ public class MockDataGenerator {
         person.setLastName("Linden");
         person.setPersonId("5");
         person.setPhoneNumber("+31 63 739 4111");
+
+        return people;
+
     }
 
-    private void createLocations(){
+    public static List<Location> getLocations(){
+        List<Location> locations = new ArrayList<Location>();
+
     	Location location = new Location();
     	location.setLocationId("540");
     	location.setName("IBM Hackathon");
 
-    	getLocations().add(location);
+        locations.add(location);
 
     	location = new Location();
     	location.setLocationId("560");
     	location.setName("Canal Barge Company");
 
-    	this.locations.add(location);
+    	locations.add(location);
 
     	location = new Location();
     	location.setLocationId("570");
     	location.setName("ElstarIt");
 
-        getLocations().add(location);
+        locations.add(location);
 
     	location = new Location();
     	location.setLocationId("580");
     	location.setName("Intect");
 
-        getLocations().add(location);
+        locations.add(location);
 
     	location = new Location();
     	location.setLocationId("590");
     	location.setName("Brytec");
+
+    	return locations;
+
     }
 
-    private void createEvents() {
+    public static List<Event> getEvents() {
         Event event = new Event();
         List<LocalDate> range = new ArrayList<LocalDate>();
         range.add(new LocalDate("2017-02-20"));
         int counter = 0;
+        List<Event> events = new ArrayList<Event>();
 
-        for(Iterator<Person> i = getPeople().iterator(); i.hasNext(); ) {
+        List<Person> people = getPeople();
+
+        for(Iterator<Person> i = people.iterator(); i.hasNext(); ) {
             Person person = i.next();
             Event currentEvent = new Event();
             currentEvent.setPersonId(person.getPersonId());
@@ -136,34 +149,11 @@ public class MockDataGenerator {
             currentEvent.setEventId("400-" + counter++);
             currentEvent.setLongitude(new Float(0));
             currentEvent.setLatitude(new Float(0));
+
+            events.add(currentEvent);
         }
 
-
-    }
-
-
-    public List<Person> getPeople() {
-        return people;
-    }
-
-    public void setPeople(List<Person> people) {
-        this.people = people;
-    }
-
-    public List<Location> getLocations() {
-        return locations;
-    }
-
-    public void setLocations(List<Location> locations) {
-        this.locations = locations;
-    }
-
-    public List<Event> getEvents() {
         return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
     }
 
 }

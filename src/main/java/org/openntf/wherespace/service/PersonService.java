@@ -1,5 +1,6 @@
 package org.openntf.wherespace.service;
 
+import org.openntf.wherespace.mock.MockDataGenerator;
 import org.openntf.wherespace.model.Location;
 import org.openntf.wherespace.model.Person;
 import org.openntf.wherespace.model.Success;
@@ -14,19 +15,22 @@ import java.util.List;
 public class PersonService extends BaseService {
 
     public Person post(Person person){
-        getGenerator().getPeople().add(person);
+        MockDataGenerator.getPeople().add(person);
         return person;
     }
 
     public Person put(Person person){
-        getGenerator().getPeople().add(person);
+        MockDataGenerator.getPeople().add(person);
         return person;
     }
 
     public Person get(String personId){
-        List<Person> persons = getGenerator().getPeople();
+        System.out.println("************LETS GET THE PERSON*******************");
+        List<Person> persons = MockDataGenerator.getPeople();
+        System.out.println(persons);
         for(Person person : persons){
             if (personId.equals(person.getPersonId())){
+                System.out.println("person ID = "+ person.getPersonId());
                 return person;
             }
         }
@@ -34,7 +38,7 @@ public class PersonService extends BaseService {
     }
 
     public Person getByEmail(String email){
-        List<Person> persons = getGenerator().getPeople();
+        List<Person> persons = MockDataGenerator.getPeople();
         for(Person person : persons){
             if (email.equals(person.getEmailaddress())){
                 return person;
@@ -44,7 +48,7 @@ public class PersonService extends BaseService {
     }
 
     public Success delete(String personId){
-        List<Person> persons = getGenerator().getPeople();
+        List<Person> persons = MockDataGenerator.getPeople();
         for(Person person : persons){
             if (personId.equals(person.getPersonId())){
                 persons.remove(person);
