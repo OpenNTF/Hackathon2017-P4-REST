@@ -67,6 +67,16 @@
                 ],
                 "parameters": [
                     {
+                        "name": "body",
+                        "in": "body",
+                        "description": "The event.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Event"
+                        }
+
+                    },
+                    {
                         "name": "eventId",
                         "in": "path",
                         "description": "The ID of the event.",
@@ -105,6 +115,15 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "The event.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Event"
+                        }
+                    },
                     {
                         "name": "eventId",
                         "in": "path",
@@ -320,6 +339,15 @@
                 ],
                 "parameters": [
                     {
+                        "name": "body",
+                        "in": "body",
+                        "description": "The person.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Person"
+                        }
+                    },
+                    {
                         "name": "personId",
                         "in": "path",
                         "description": "The ID of the person.",
@@ -358,6 +386,15 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "The person.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Person"
+                        }
+                    },
                     {
                         "name": "personId",
                         "in": "path",
@@ -519,6 +556,15 @@
                 ],
                 "parameters": [
                     {
+                        "name": "body",
+                        "in": "body",
+                        "description": "The location.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Location"
+                        }
+                    },
+                    {
                         "name": "locationId",
                         "in": "path",
                         "description": "The ID of the location.",
@@ -557,6 +603,15 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "The location.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Location"
+                        }
+                    },
                     {
                         "name": "locationId",
                         "in": "path",
